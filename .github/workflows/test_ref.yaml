@@ -1,0 +1,23 @@
+name: Tests
+run-name: -> ${{ github.actor }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      string-value:
+        description: 'String value'
+        type: string
+jobs:
+  create-release-branch:
+    runs-on: ubuntu-latest
+    name: Teste ref
+
+    steps:
+      - name: Log
+        run: |
+          echo "String value: ${{ github.event.inputs.string-value }}"
+          echo "String event.ref: ${{ github.event.ref }}"
+          echo "String ref: ${{ github.ref }}"
+          echo "String value: ${{ github.event.inputs.string-value }}" >> $GITHUB_STEP_SUMMARY
+          echo "String event.ref: ${{ github.event.ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "String ref: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
